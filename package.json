@@ -1,6 +1,6 @@
 {
   "name": "gmail-getter",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A simple tool that gets emails from the Gmail API",
   "main": "dist/index.js",
   "files": [
