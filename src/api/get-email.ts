@@ -3,7 +3,6 @@ import {Email} from './types'
 
 /**
  * Get an email by its id
- *
  * @param {string} id Unique ID of the email
  * @param {string} token OAuth Access token
  * @returns {Promise<Email | null>} Email contents

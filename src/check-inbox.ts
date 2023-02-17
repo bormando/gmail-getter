@@ -2,7 +2,6 @@ import {getEmailsList, EmailsList, Email, getEmail} from './api'
 
 /**
  * Check Gmail inbox
- *
  * @param {string} token OAuth Access token
  * @param {number} timeout Function timeout (ms)
  * @param {number} step Time between retries (ms)

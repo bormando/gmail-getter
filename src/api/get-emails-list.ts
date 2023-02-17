@@ -3,7 +3,6 @@ import {EmailsList} from './types'
 
 /**
  * Get list of emails
- *
  * @param {string} token OAuth Access token
  * @param {string} query Query that specifies search criteria (https://support.google.com/mail/answer/7190)
  * @returns {Promise<EmailsList | null>} List of emails

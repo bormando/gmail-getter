@@ -2,9 +2,8 @@ import {Email} from './api'
 
 /**
  * Parse HTML link from an email
- *
- * @param {Email} email OAuth Access token
- * @param {RegExp} regex Function timeout (ms)
+ * @param {Email} email Email content
+ * @param {RegExp} regex Regular expression for a link, example: https://regex101.com/r/f3RXKp/1
  * @returns {string | null} HTML link
  * @example const link = parseLinkFromHtml('test@gmail.com', /(https:\/\/)(\S*)(gmail-getter)([\w\/\?\=\-]*)/im)
  */

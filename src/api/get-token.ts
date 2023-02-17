@@ -2,7 +2,6 @@ import axios, {AxiosRequestConfig, AxiosResponse} from 'axios'
 
 /**
  * Get Access token from Google API
- *
  * @param {string} clientId OAuth Client ID
  * @param {string} clientSecret OAuth Client Secret
  * @param {string} refreshToken OAuth Refresh token
