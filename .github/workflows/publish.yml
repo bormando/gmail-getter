@@ -5,7 +5,7 @@ on:
     types: [published]
 
 jobs:
-  build:
+  publish:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
@@ -14,7 +14,9 @@ jobs:
           node-version: '16'
           registry-url: 'https://registry.npmjs.org'
       - name: Install dependencies
-        run: npm i --production
+        run: npm ci
+      - name: Build
+        run: npm run build
       - name: Set executable rights on bin script
         run: chmod +x dist/get-token-script.js
       - name: Publish package
