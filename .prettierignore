@@ -1,0 +1,5 @@
+dist
+schema.json
+tsconfig.json
+*.md
+*.yml

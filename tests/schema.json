@@ -1,0 +1,190 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "definitions": {
+    "Email": {
+      "additionalProperties": false,
+      "properties": {
+        "historyId": {
+          "type": "string"
+        },
+        "id": {
+          "type": "string"
+        },
+        "internalDate": {
+          "type": "string"
+        },
+        "labelIds": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "payload": {
+          "additionalProperties": false,
+          "properties": {
+            "body": {
+              "additionalProperties": false,
+              "properties": {
+                "size": {
+                  "type": "number"
+                }
+              },
+              "required": [
+                "size"
+              ],
+              "type": "object"
+            },
+            "filename": {
+              "type": "string"
+            },
+            "headers": {
+              "items": {
+                "additionalProperties": false,
+                "properties": {
+                  "name": {
+                    "type": "string"
+                  },
+                  "value": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "name",
+                  "value"
+                ],
+                "type": "object"
+              },
+              "type": "array"
+            },
+            "mimeType": {
+              "type": "string"
+            },
+            "partId": {
+              "type": "string"
+            },
+            "parts": {
+              "items": {
+                "additionalProperties": false,
+                "properties": {
+                  "body": {
+                    "additionalProperties": false,
+                    "properties": {
+                      "data": {
+                        "type": "string"
+                      },
+                      "size": {
+                        "type": "number"
+                      }
+                    },
+                    "required": [
+                      "size",
+                      "data"
+                    ],
+                    "type": "object"
+                  },
+                  "filename": {
+                    "type": "string"
+                  },
+                  "headers": {
+                    "items": {
+                      "additionalProperties": false,
+                      "properties": {
+                        "name": {
+                          "type": "string"
+                        },
+                        "value": {
+                          "type": "string"
+                        }
+                      },
+                      "required": [
+                        "name",
+                        "value"
+                      ],
+                      "type": "object"
+                    },
+                    "type": "array"
+                  },
+                  "mimeType": {
+                    "type": "string"
+                  },
+                  "partId": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "partId",
+                  "mimeType",
+                  "filename",
+                  "headers",
+                  "body"
+                ],
+                "type": "object"
+              },
+              "type": "array"
+            }
+          },
+          "required": [
+            "partId",
+            "mimeType",
+            "filename",
+            "headers",
+            "body",
+            "parts"
+          ],
+          "type": "object"
+        },
+        "sizeEstimate": {
+          "type": "number"
+        },
+        "snippet": {
+          "type": "string"
+        },
+        "threadId": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "threadId",
+        "labelIds",
+        "snippet",
+        "payload",
+        "sizeEstimate",
+        "historyId",
+        "internalDate"
+      ],
+      "type": "object"
+    },
+    "EmailsList": {
+      "additionalProperties": false,
+      "properties": {
+        "messages": {
+          "items": {
+            "additionalProperties": false,
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "threadId": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "id",
+              "threadId"
+            ],
+            "type": "object"
+          },
+          "type": "array"
+        },
+        "resultSizeEstimate": {
+          "type": "number"
+        }
+      },
+      "required": [
+        "resultSizeEstimate"
+      ],
+      "type": "object"
+    }
+  }
+}
