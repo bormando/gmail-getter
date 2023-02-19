@@ -18,15 +18,13 @@ Steps to go:
 3. Enable [Gmail API](https://console.cloud.google.com/apis/library/gmail.googleapis.com).
 4. Obtain a Refresh token.
 
-To get a Refresh token - simply execute this command in a project root (or anywhere else if you've got the package installed globally). You must have `credentials.json` file in the place you execute the command.
+To get a Refresh token - simply execute a command in a project root:
+> npx gmail-getter get-refresh-token
 
-```
-// inside of a project folder
-npx gmail-getter get-refresh-token
+(or anywhere else if you've got the package installed globally)
+> get-refresh-token
 
-// globally
-get-refresh-token
-```
+You must put `credentials.json` file in a place you execute the command.
 
 ⚠️ credentials file name is case-sensitive ⚠️
 
