@@ -21,7 +21,11 @@ Steps to go:
 To get a Refresh token - simply execute this command in a project root (or anywhere else if you've got the package installed globally). You must have `credentials.json` file in the place you execute the command.
 
 ```
+// inside of a project folder
 npx gmail-getter get-refresh-token
+
+// globally
+get-refresh-token
 ```
 
 ⚠️ credentials file name is case-sensitive ⚠️
