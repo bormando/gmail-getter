@@ -5,7 +5,7 @@ import {Email} from './api'
  * @param {Email} email Email content
  * @param {RegExp} regex Regular expression for a link, example: https://regex101.com/r/f3RXKp/1
  * @returns {string | null} HTML link
- * @example const link = parseLinkFromHtml('test@gmail.com', /(https:\/\/)(\S*)(gmail-getter)([\w\/\?\=\-]*)/im)
+ * @example const link = parseLinkFromHtml(email, /(https:\/\/)(\S*)(gmail-getter)([\w\/\?\=\-]*)/im)
  */
 export const parseLinkFromHtml = (email: Email, regex: RegExp): string | null => {
   if (!email) throw new Error('Email is missing!')
