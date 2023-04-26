@@ -1,4 +1,4 @@
-import {Email, checkInbox, parseLinkFromHtml, getToken} from 'src'
+import {Email, checkInbox, parseLinkFromHtml, getToken, parseHtml} from 'src'
 import * as schema from './schema.json'
 
 describe('Helpers', () => {
@@ -25,6 +25,11 @@ describe('Helpers', () => {
 
     test('Contains a link', () => {
       const link = parseLinkFromHtml(email!, /(https:\/\/)(\S*)(gmail-getter)([\w\/\?\=\-]*)/im)
+      expect(typeof link).toBe('string')
+    })
+
+    test('Contains HTML content', () => {
+      const link = parseHtml(email!)
       expect(typeof link).toBe('string')
     })
   })
