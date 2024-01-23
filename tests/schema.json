@@ -160,20 +160,7 @@
       "properties": {
         "messages": {
           "items": {
-            "additionalProperties": false,
-            "properties": {
-              "id": {
-                "type": "string"
-              },
-              "threadId": {
-                "type": "string"
-              }
-            },
-            "required": [
-              "id",
-              "threadId"
-            ],
-            "type": "object"
+            "$ref": "#/definitions/Message"
           },
           "type": "array"
         },
@@ -183,6 +170,22 @@
       },
       "required": [
         "resultSizeEstimate"
+      ],
+      "type": "object"
+    },
+    "Message": {
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "threadId": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "threadId"
       ],
       "type": "object"
     }
