@@ -1,7 +1,6 @@
+import {Message} from './message'
+
 export type EmailsList = {
-  messages?: {
-    id: string
-    threadId: string
-  }[]
+  messages?: Message[]
   resultSizeEstimate: number
 }
