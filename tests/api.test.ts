@@ -1,44 +1,46 @@
-import {EmailsList, Email, getEmail, getEmailsList, getToken} from 'dist'
+import {Email, fetchEmailById, fetchEmailsListByQuery, getAccessToken, Message} from 'dist'
 import * as schema from './schema.json'
 
 describe('API requests', () => {
-  let token: string | null
+  let token: string
 
   beforeAll(async () => {
-    token = await getToken(
+    token = await getAccessToken(
       process.env.CLIENT_ID!,
       process.env.CLIENT_SECRET!,
       process.env.REFRESH_TOKEN!
     )
   })
 
-  describe('Get token', () => {
-    test('Returns a string', () => {
+  describe('Access Token', () => {
+    test('Fetch Access token', () => {
       expect(typeof token).toBe('string')
     })
   })
 
   describe('Emails', () => {
-    let emails: EmailsList | null
+    let emails: Message[]
 
     beforeAll(async () => {
-      emails = await getEmailsList(token!, 'from:squier7 subject:Test!')
+      const query = 'from:squier7 subject:Test!'
+      emails = await fetchEmailsListByQuery(token, query)
     })
 
-    describe('Get emails list', () => {
-      test('Returns at least one email', () => {
-        expect(emails).toMatchSchema(schema.definitions.EmailsList)
+    describe('Emails List', () => {
+      test('Fetch emails list by query', () => {
+        expect(emails.at(0)).toMatchSchema(schema.definitions.Message)
       })
     })
 
-    describe('Get email by its id', () => {
-      let email: Email | null
+    describe('Email', () => {
+      let email: Email
 
       beforeAll(async () => {
-        email = await getEmail(emails!.messages![0].id, token!)
+        const {id} = emails[0]
+        email = await fetchEmailById(id, token)
       })
 
-      test('Returns an email', () => {
+      test('Fetch an email by id', () => {
         expect(email).toMatchSchema(schema.definitions.Email)
       })
     })
