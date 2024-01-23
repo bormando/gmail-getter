@@ -12,9 +12,13 @@ import path from 'path'
     keyfilePath: CREDENTIALS_PATH,
   })
 
-  if (!client.credentials) throw new Error('Authentication failed!')
+  if (!client.credentials) {
+    throw new Error('Authentication failed!')
+  }
 
-  if (!client.credentials.refresh_token) throw new Error("Couldn't obtain refresh token!")
+  if (!client.credentials.refresh_token) {
+    throw new Error(`Couldn't obtain refresh token!`)
+  }
 
   console.log(client.credentials.refresh_token)
 })()
