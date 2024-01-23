@@ -1,4 +1,4 @@
 export * from './types'
-export * from './get-email'
-export * from './get-emails-list'
-export * from './get-token'
+export * from './fetch-email-by-id'
+export * from './fetch-emails-list-by-query'
+export * from './get-access-token'

@@ -1,4 +1,4 @@
 export * from './check-inbox'
-export * from './parse-link-from-html'
-export * from './parse-html'
+export * from './find-element-by-regexp'
+export * from './parse-html-from-email'
 export * from './api'
