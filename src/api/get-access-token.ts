@@ -1,22 +1,20 @@
-import axios, {AxiosRequestConfig, AxiosResponse} from 'axios'
+import axios, {AxiosRequestConfig} from 'axios'
 
 /**
  * Get Access token from Google API
  * @param {string} clientId OAuth Client ID
  * @param {string} clientSecret OAuth Client Secret
  * @param {string} refreshToken OAuth Refresh token
- * @returns {Promise<string | null>} Access token
- * @example const accessToken = await getToken('123456-...', 'ABCD-...', '1//ABCD123...')
+ * @returns {Promise<string>} Access token
+ * @example const accessToken = await getAccessToken('123456-...', 'ABCD-...', '1//ABCD123...')
  */
-export const getToken = async (
+export const getAccessToken = async (
   clientId: string,
   clientSecret: string,
   refreshToken: string
-): Promise<string | null> => {
+): Promise<string> => {
   if (!clientId) throw new Error('Client ID is missing!')
-
   if (!clientSecret) throw new Error('Client Secret is missing!')
-
   if (!refreshToken) throw new Error('Refresh Token is missing!')
 
   const params = new URLSearchParams()
@@ -34,21 +32,18 @@ export const getToken = async (
     validateStatus: () => true,
   }
 
-  let response: AxiosResponse | null = null
+  const response = await axios.request(config)
+  const {data: body} = response
 
-  try {
-    response = await axios.request(config)
-  } catch (error) {
-    console.log(error)
+  if (!body) {
+    throw new Error(`Unable to parse response body. ${JSON.stringify(response)}`)
   }
 
-  if (!response) {
-    return null
+  const {access_token: accessToken} = body
+
+  if (!accessToken) {
+    throw new Error(`Unable to parse Access token from the response body. ${JSON.stringify(body)}`)
   }
 
-  const body = response.data
-
-  if (!body.hasOwnProperty('access_token')) return null
-
-  return body.access_token
+  return accessToken
 }
