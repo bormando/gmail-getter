@@ -1,21 +1,22 @@
 import {Email} from './api'
 
 /**
- * Parse HTML code from an email
+ * Parse HTML from email
  * @param {Email} email Email content
- * @returns {string} HTML code
+ * @returns {string} HTML content
  * @example const html = parseHtmlFromEmail(email)
  */
 export const parseHtmlFromEmail = (email: Email): string => {
   if (!email) {
-    throw new Error('Email is missing!')
+    throw new Error('Failed to parse HTML from email - the email object is null or undefined.')
   }
 
   const part = email.payload.parts.find(part => part.mimeType === 'text/html')
 
   if (!part) {
     throw new Error(
-      `Couldn't find HTML body part in email.\n${JSON.stringify(email.payload.parts)}`
+      `Failed to parse HTML from email - couldn't find HTML body part in the email.
+      \n${JSON.stringify(email.payload.parts)}`
     )
   }
 

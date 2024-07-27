@@ -1,4 +1,4 @@
-import {fetchEmailsListByQuery, Email, fetchEmailById, Message} from './api'
+import {fetchEmailsList, Email, fetchEmailById, Message} from './api'
 
 export type CheckInboxOptions = {
   token: string
@@ -21,9 +21,9 @@ export type CheckInboxOptions = {
  */
 export const checkInbox = async (options: CheckInboxOptions): Promise<Email | Email[] | null> => {
   const {token, query} = options
-  const timeout = options.timeout || 15000
-  const step = options.step || 1500
-  const all = options.all || false
+  const timeout = options.timeout ?? 15000
+  const step = options.step ?? 1500
+  const all = options.all ?? false
 
   if (!token) {
     throw new Error('Access token is missing!')
@@ -35,7 +35,7 @@ export const checkInbox = async (options: CheckInboxOptions): Promise<Email | Em
 
   while (Date.now() - startTime < timeout) {
     try {
-      messages = await fetchEmailsListByQuery(token, query)
+      messages = await fetchEmailsList(token, query)
     } catch (error) {
       console.log(error)
     }

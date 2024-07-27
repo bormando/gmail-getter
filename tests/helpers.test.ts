@@ -1,4 +1,4 @@
-import {Email, checkInbox, findElementByRegexp, getAccessToken, parseHtmlFromEmail} from 'dist'
+import {Email, checkInbox, getAccessToken, parseHtmlFromEmail} from 'dist'
 import * as schema from './schema.json'
 
 describe('Helpers', () => {
@@ -24,12 +24,6 @@ describe('Helpers', () => {
 
     test('Get email by query', () => {
       expect(email).toMatchSchema(schema.definitions.Email)
-    })
-
-    test('Find an element in email content', () => {
-      const regex = /(https:\/\/)(\S*)(gmail-getter)([\w\/\?\=\-]*)/im
-      const link = findElementByRegexp(email, regex)
-      expect(typeof link).toBe('string')
     })
 
     test('Prase HTML from email content', () => {
