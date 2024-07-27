@@ -14,7 +14,8 @@
     "generate-schema": "ts-json-schema-generator --path 'src/**/types/*.ts' -o 'tests/schema.json'",
     "test": "jest",
     "format": "prettier . --write --list-different && eslint src/**/*.ts tests/**/*.ts jest.config.ts --fix",
-    "lint": "prettier . --check && eslint src/**/*.ts tests/**/*.ts jest.config.ts"
+    "lint": "prettier . --check && eslint src/**/*.ts tests/**/*.ts jest.config.ts",
+    "typecheck": "tsc --noEmit"
   },
   "repository": {
     "type": "git",
