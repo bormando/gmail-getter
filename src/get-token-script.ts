@@ -1,24 +1,37 @@
 #!/usr/bin/env node
 import {authenticate} from '@google-cloud/local-auth'
+import {OAuth2Client} from 'google-auth-library'
 import path from 'path'
 
-// prettier-ignore -- newline after imports
-;(async () => {
+const script = async (): Promise<void> => {
   const CREDENTIALS_PATH = path.join(process.cwd(), 'credentials.json')
   const SCOPES = ['https://www.googleapis.com/auth/gmail.readonly']
 
-  const client = await authenticate({
-    scopes: SCOPES,
-    keyfilePath: CREDENTIALS_PATH,
-  })
+  console.log(
+    "Starting the process of obtaining a refresh token... \
+    \nINFO: This script is processing information from 'credentials.json' in your current folder."
+  )
+
+  let client: OAuth2Client
+
+  try {
+    client = await authenticate({
+      scopes: SCOPES,
+      keyfilePath: CREDENTIALS_PATH,
+    })
+  } catch (e) {
+    throw new Error(`Authentication request has failed.\n${JSON.stringify(e, null, 2)}`)
+  }
 
   if (!client.credentials) {
-    throw new Error('Authentication failed!')
+    throw new Error('Failed to obtain credentials - unknown error.')
   }
 
   if (!client.credentials.refresh_token) {
-    throw new Error(`Couldn't obtain refresh token!`)
+    throw new Error('Failed to obtain refresh token - unknown error.')
   }
 
   console.log(client.credentials.refresh_token)
-})()
+}
+
+script().catch(e => console.error(e))
