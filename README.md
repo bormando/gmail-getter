@@ -58,12 +58,12 @@ const gmail = require('gmail-getter')
 You need to get an Access token before you execute other requests:
 
 ```ts
-import {getAccessToken} = 'gmail-getter'
+import {getAccessToken} from 'gmail-getter'
 
 const accessToken = await getAccessToken(
-  clientId: 'your-client-id',
-  clientSecret: 'your-client-secret', 
-  refreshToken: 'your-refresh-token'
+  'your-client-id',
+  'your-client-secret', 
+  'your-refresh-token'
 )
 ```
 
