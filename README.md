@@ -86,6 +86,7 @@ Options available:
 * `step` (optional) sets timeout between retries to fetch an email
 * `all` (optional) says whether to find a single email or all mathing the query criteria
 * `query` (optional) lets you filter out emails you want to find, you can find more about queries [there](https://support.google.com/mail/answer/7190)
+* `logs` (optional) turns on or off polling logs of attempts to get emails
 
 ### Parse HTML from email
 If your email contains html content - you can parse it and even render it in the browser with a browser automation tool (like [Playwright](https://playwright.dev/docs/api/class-page#page-set-content)):

@@ -6,7 +6,7 @@ export type Message = {
 }
 
 export type EmailsList = {
-  messages: Message[]
-  nextPageToken: string
+  messages?: Message[]
+  nextPageToken?: string
   resultSizeEstimate: number
 }
