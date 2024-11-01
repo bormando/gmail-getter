@@ -37,6 +37,7 @@ export const getAccessToken = async (
     timeout: 15000,
     headers: {'content-type': 'application/x-www-form-urlencoded'},
     data: params,
+    validateStatus: () => true,
   }
 
   let response: AxiosResponse
@@ -46,7 +47,7 @@ export const getAccessToken = async (
   } catch (e) {
     throw new Error(
       `Failed to get Google access token - API request to Google has failed.
-      \n${JSON.stringify(e, null, 2)}`
+        \n${JSON.stringify(e, null, 2)}`
     )
   }
 
@@ -55,7 +56,7 @@ export const getAccessToken = async (
   if (!body) {
     throw new Error(
       `Failed to get Google access token - unable to parse response body.
-      \n${JSON.stringify(response, null, 2)}`
+        \n${JSON.stringify(response, null, 2)}`
     )
   }
 
@@ -64,7 +65,7 @@ export const getAccessToken = async (
   if (!accessToken) {
     throw new Error(
       `Failed to get Google access token - unable to parse access token from the response body.
-      \n${JSON.stringify(body, null, 2)}`
+        \n${JSON.stringify(body, null, 2)}`
     )
   }
 
