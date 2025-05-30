@@ -1,10 +1,10 @@
 import {fetchEmailsList, Email, fetchEmailById, Message} from './api'
 
-export type CheckInboxOptions = {
+export type CheckInboxOptions<T extends boolean = false> = {
   token: string
   timeout?: number
   step?: number
-  all?: boolean
+  all?: T
   query?: string
   logs?: boolean
 }
@@ -18,10 +18,12 @@ export type CheckInboxOptions = {
  * @param {boolean} [options.all=false] Whether to find a single email or all mathing the query criteria
  * @param {string} [options.query] Query that specifies search criteria (https://support.google.com/mail/answer/7190)
  * @param {boolean} [options.logs=true] Whether to log every attempt to get emails or not
- * @returns {Promise<Email | Email[] | null>} Email contents
+ * @returns {Promise<Email | Email[]>} Email contents
  * @example const email = await checkInbox({token: 'ya01.a123456...', query: 'from:squier7 subject:Test!'})
  */
-export const checkInbox = async (options: CheckInboxOptions): Promise<Email | Email[] | null> => {
+export const checkInbox = async <T extends boolean = false>(
+  options: CheckInboxOptions<T>
+): Promise<T extends true ? Email[] : Email> => {
   const {token, query} = options
   const timeout = options.timeout ?? 15000
   const step = options.step ?? 1500
@@ -52,12 +54,12 @@ export const checkInbox = async (options: CheckInboxOptions): Promise<Email | Em
   }
 
   if (messages.length === 0) {
-    return null
+    return null as unknown as T extends true ? Email[] : Email
   }
 
   if (!all) {
     const email = await fetchEmailById(messages[0].id, token)
-    return email
+    return email as T extends true ? Email[] : Email
   }
 
   let emails: Email[] = []
@@ -68,5 +70,5 @@ export const checkInbox = async (options: CheckInboxOptions): Promise<Email | Em
     await new Promise(resolve => setTimeout(resolve, step))
   }
 
-  return emails
+  return emails as T extends true ? Email[] : Email
 }
