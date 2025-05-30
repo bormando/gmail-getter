@@ -84,7 +84,7 @@ Options available:
 * `token` is an access token
 * `timeout` (optional) sets maximum execution time for the function
 * `step` (optional) sets timeout between retries to fetch an email
-* `all` (optional) says whether to find a single email or all mathing the query criteria
+* `all` (optional) says whether to find a single email or all matching the query criteria
 * `query` (optional) lets you filter out emails you want to find, you can find more about queries [there](https://support.google.com/mail/answer/7190)
 * `logs` (optional) turns on or off polling logs of attempts to get emails
 
