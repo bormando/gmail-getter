@@ -1,4 +1,4 @@
-import {fetchEmailsList, Email, fetchEmailById, Message} from './api'
+import {Email, fetchEmailById, fetchEmailsList, Message} from './api'
 
 export type CheckInboxOptions<T extends boolean = false> = {
   token: string

@@ -1,8 +1,8 @@
 #!/usr/bin/env node
 import {authenticate} from '@google-cloud/local-auth'
+import fs from 'fs'
 import {OAuth2Client} from 'google-auth-library'
 import path from 'path'
-import fs from 'fs'
 
 const script = async (): Promise<void> => {
   const CREDENTIALS_PATH = path.join(process.cwd(), 'credentials.json')
