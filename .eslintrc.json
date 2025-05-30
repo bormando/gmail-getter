@@ -5,8 +5,10 @@
     "ecmaVersion": "latest",
     "sourceType": "module"
   },
+  "plugins": ["prettier"],
   "extends": ["plugin:prettier/recommended"],
   "rules": {
+    "prettier/prettier": "error",
     "padding-line-between-statements": [
       "error",
       {
