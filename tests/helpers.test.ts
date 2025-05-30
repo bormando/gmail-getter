@@ -16,10 +16,7 @@ describe('Helpers', () => {
     let email: Email
 
     beforeAll(async () => {
-      email = (await checkInbox({
-        token,
-        query: 'from:squier7 subject:Test!',
-      })) as Email
+      email = await checkInbox({token, query: 'from:squier7 subject:Test!'})
     })
 
     test('Get email by query', () => {
